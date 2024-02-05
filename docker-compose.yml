@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: .    # Directory contenente il Dockerfile di backend
+    networks:
+      - my_bridge_network
+    ports:
+      - "8080:8080"
+
+networks:
+  my_bridge_network:
+    driver: bridge
