@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-pizzeria
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-pizzeria
+  template:
+    metadata:
+      labels:
+        app: app-pizzeria
+    spec:
+      containers:
+        - name: app-pizzeria  # Nome del container senza punto
+          image: "zucca86/app-pizzeria:1.0.0"
+          imagePullPolicy: Always  # Politica di pull delle immagini
+          ports:
+            - containerPort: 80
+          resources:  # Richieste e limiti di risorse
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
