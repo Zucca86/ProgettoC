@@ -8,6 +8,19 @@ services:
       - my_bridge_network
     ports:
       - "8080:8080"
+    depends_on:
+      - postgres  # Dipende dal servizio 'postgres'
+
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"  # Mappa la porta 5432 del container all'host
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    networks:
+      - my_bridge_network
 
 networks:
   my_bridge_network:

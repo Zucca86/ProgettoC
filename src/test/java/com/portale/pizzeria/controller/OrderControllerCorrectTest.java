@@ -2,6 +2,7 @@ package com.portale.pizzeria.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.portale.pizzeria.OrderStatus;
+import com.portale.pizzeria.WrapperTestContainer;
 import com.portale.pizzeria.dto.Order;
 import com.portale.pizzeria.dto.OrderCode;
 import org.junit.jupiter.api.Assertions;
@@ -10,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -20,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class OrderControllerCorrectTest {
+public class OrderControllerCorrectTest extends WrapperTestContainer {
 
     @Autowired
     private MockMvc mockMvc;
